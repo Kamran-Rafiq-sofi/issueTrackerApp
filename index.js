@@ -6,7 +6,7 @@ const port=8000;
 const app=express();
 const path=require('path');
 const expressLayouts=require('express-ejs-layouts');
-
+const env=require('./config/environment');
 
 
 //passport and session requirements
@@ -17,15 +17,17 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
 app.use(express.urlencoded({extended:true}))
-app.use(express.static('assets'))
-app.use(expressLayouts)
+// app.use(express.static('./assets'))
+app.use(express.static(env.asset_path))
+
 app.use(cookieParser());
 
 
 // // session setup
 app.use(session({
-    name: 'ERS',
-    secret: "issue",
+    name: 'issuetracking',
+    // secret: "issue",
+    secret:env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -42,10 +44,11 @@ app.use(session({
 // app.use(passport.initialize());
 // app.use(passport.session());
 // app.use(passport.setAuthenticatedUser);
+app.use(expressLayouts)
 
 // Extract Styles And Scripts from sub pages
-app.set('layout  extractStyles',true)
-app.set('layout extractScripts',true)
+app.set('layout extractStyles',  true)
+app.set('layout extractScripts', true)
 
 // Setup ViewEngine
 app.set('view engine', 'ejs')
