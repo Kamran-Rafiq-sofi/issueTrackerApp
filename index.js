@@ -19,7 +19,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
 app.use(express.urlencoded({extended:true}))
-app.use(express.static('./assets'))
+// app.use(express.static('./assets'))
 app.use(express.static(env.asset_path))
 // app.use(express.static(process.env.ERS_ASSET_PATH))
 // app.use(express.static(process.env.ISSUE_ASSET_PATH))
@@ -66,9 +66,9 @@ app.set('layout extractScripts', true)
 
 // Setup ViewEngine
 app.set('view engine', 'ejs')
-app.set('views','./views')
+// app.set('views','./views')
 // path.join(__dirname);
-// app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 
 
 
@@ -81,3 +81,10 @@ app.listen(port,function(err){
 console.log(`server is running at port: ${port}`)
 })
 
+//  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+// // export NVM_DIR="$HOME/.nvm"
+//  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+//  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+// ssh -i ~/Downloads/issueTrackerApp.pem ubuntu@ec2-16-16-25-234.eu-north-1.compute.amazonaws.com
+// sudo systemctl start mongod
