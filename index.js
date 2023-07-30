@@ -2,7 +2,8 @@ require('dotenv').config();  //Load Env
 
 const express =require('express');
 const db=require('./config/mongoose');
-const port=8000;
+// const port=8000;
+const port=process.env.ERS_PORT || 8000;
 const app=express();
 const path=require('path');
 const expressLayouts=require('express-ejs-layouts');
@@ -18,7 +19,9 @@ const MongoStore = require('connect-mongo');
 
 app.use(express.urlencoded({extended:true}))
 // app.use(express.static('./assets'))
-app.use(express.static(env.asset_path))
+// app.use(express.static(env.asset_path))
+app.use(express.static(process.env.ERS_ASSET_PATH))
+
 
 app.use(cookieParser());
 
@@ -27,14 +30,17 @@ app.use(cookieParser());
 app.use(session({
     name: 'issuetracking',
     // secret: "issue",
-    secret:env.session_cookie_key,
+    // secret:env.session_cookie_key,
+    secret:process.env.ERS_SESSION_COOKIE_KEY,
+
     saveUninitialized: false,
     resave: false,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
     },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://127.0.0.1/IssueTrackerApp',
+        // mongoUrl: 'mongodb://127.0.0.1/IssueTrackerApp',
+        mongoUrl:process.env.ERS_DB_URI,
         collectionName: 'session',
         autoRemove: 'native'
     })
@@ -66,3 +72,4 @@ app.listen(port,function(err){
 }
 console.log(`server is running at port: ${port}`)
 })
+

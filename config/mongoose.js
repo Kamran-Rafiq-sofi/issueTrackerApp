@@ -1,7 +1,9 @@
 const env=require('./environment');
 const mongoose=require('mongoose')
 // const url='mongodb://127.0.0.1/IssueTrackerApp';
-const url=`mongodb://127.0.0.1/${env.db}`;
+// const url=`mongodb://127.0.0.1/${env.db}`;
+const url=process.env.ERS_DB_URI;
+
 
 mongoose.connect(url);
 const db=mongoose.connection;
