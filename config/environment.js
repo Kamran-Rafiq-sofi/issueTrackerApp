@@ -19,8 +19,8 @@ const development={
 // module.exports=development;
 
 const production={
-    name:'production',
-    // name:process.env.SOCIALMEDIA_ENVIRONMENT,
+    // name:'production',
+    name:process.env.ISSUE_ENVIRONMENT,
     asset_path:process.env.ISSUE_ASSET_PATH,
     // session_cookie_key:'blah',
      session_cookie_key:process.env.SESSION_COOKIE_KEY ,

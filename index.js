@@ -88,3 +88,4 @@ console.log(`server is running at port: ${port}`)
 //  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 // ssh -i ~/Downloads/issueTrackerApp.pem ubuntu@ec2-16-16-25-234.eu-north-1.compute.amazonaws.com
 // sudo systemctl start mongod
+// https://gitlab.com/kamranrafiq805/issueTrackerApp.git
