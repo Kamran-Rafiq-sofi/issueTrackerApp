@@ -45,7 +45,7 @@ app.use(session({
     store: MongoStore.create({
         // mongoUrl: 'mongodb://127.0.0.1/IssueTrackerApp',
         
-mongoUrl:'mongodb+srv://kamranrafiq805:kamranrafiqsofi@cluster0406.8ritmss.mongodb.net/issuetracker
+mongoUrl:'mongodb+srv://kamranrafiq805:kamranrafiqsofi@cluster0406.8ritmss.mongodb.net/issueTrackerApp'
    
 
         collectionName: 'session',
