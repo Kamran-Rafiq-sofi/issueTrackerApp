@@ -43,11 +43,10 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24,
     },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://127.0.0.1/IssueTrackerApp',
-        // mongoUrl:process.env.ERS_DB_URI,
-                // mongoUrl:env.db,
-
-        // mongoUrl:process.env.ISSUE_DATABSE,
+        // mongoUrl: 'mongodb://127.0.0.1/IssueTrackerApp',
+        
+mongoUrl:`mongodb+srv://kamranrafiq805:kamranrafiqsofi@cluster0406.8ritmss.mongodb.net/${env.db}`
+   
 
         collectionName: 'session',
         autoRemove: 'native'
@@ -81,11 +80,3 @@ app.listen(port,function(err){
 console.log(`server is running at port: ${port}`)
 })
 
-//  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-
-// // export NVM_DIR="$HOME/.nvm"
-//  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-//  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-// ssh -i ~/Downloads/issueTrackerApp.pem ubuntu@ec2-16-16-25-234.eu-north-1.compute.amazonaws.com
-// sudo systemctl start mongod
-// https://gitlab.com/kamranrafiq805/issueTrackerApp.git
